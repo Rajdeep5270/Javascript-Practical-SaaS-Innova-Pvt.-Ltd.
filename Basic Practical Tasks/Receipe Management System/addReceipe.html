@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receipe Management System</title>
+
+    <!-- main css  -->
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+
+<body>
+
+    <header>
+        <!-- navbar section  -->
+        <section class="navbar">
+            <div class="container">
+                <div class="navbar-content d-flex justify-between align-center">
+                    <h2>LOGO</h2>
+
+                    <nav>
+                        <ul class="d-flex">
+                            <li><a href="addReceipe.html">Add</a></li>
+                            <li><a href="view.html" onclick="getReceipeData(event)">View</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <main>
+        <!-- add receipe form section  -->
+        <section class="add-receipe py text-center">
+            <div class="container">
+                <div class="add-receipe-content">
+                    <div class="add-receipe-title">
+                        <h2>Add Receipe</h2>
+                    </div>
+                    <div class="add-receipe-info">
+                        <form onsubmit="addReceipeData(event)">
+                            <!-- receipe name  -->
+                            <div class="input-fields">
+                                <label for="receipe-name">Receipe Name</label>
+                                <input type="text" id="receipe-name" name="receipe-name">
+                            </div>
+
+                            <!-- receipe ingredients  -->
+                            <div class="input-fields">
+                                <label for="receipe-ingredients">Receipe Ingredients</label>
+                                <input type="text" id="receipe-ingredients" name="receipe-ingredients">
+                            </div>
+
+                            <!-- receipe description  -->
+                            <div class="input-fields">
+                                <label for="receipe-description">Receipe Description</label>
+                                <textarea name="receipe-description" id="receipe-description"></textarea>
+                            </div>
+
+                            <!-- receipe ingredients  -->
+                            <div class="input-fields">
+                                <button  type="submit">Add Receipe</button>
+                            </div>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer></footer>
+
+    <script>
+        function addReceipeData(e) {
+            e.preventDefault();
+
+            let receipe = JSON.parse(localStorage.getItem("Receipe") || "[]");
+
+            const receipeName = document.getElementById("receipe-name");
+            const receipeIngredients = document.getElementById("receipe-ingredients");
+            const receipeDescription = document.getElementById("receipe-description");
+
+            console.log(receipe);
+
+            const receipeData = {
+                id: Math.floor(Math.random() * 1000),
+                name: receipeName.value,
+                ingredients: receipeIngredients.value,
+                description: receipeDescription.value
+            }
+
+            receipe.push(receipeData);
+
+            localStorage.setItem("Receipe", JSON.stringify(receipe));
+
+            window.location.href = "/view.html"
+        };
+    </script>
+
+</body>
+
+</html>

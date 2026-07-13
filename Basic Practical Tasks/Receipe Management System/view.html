@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receipe Management System</title>
+
+    <!-- main css  -->
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+
+<body>
+
+    <header>
+        <section class="navbar">
+            <div class="container">
+                <div class="navbar-content d-flex justify-between align-center">
+                    <h2>LOGO</h2>
+
+                    <nav>
+                        <ul class="d-flex">
+                            <li><a href="addReceipe.html">Add</a></li>
+                            <li><a href="view.html">View</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <main>
+        <!-- view all receipe section  -->
+        <section class="view-all-receipe">
+            <div class="container">
+                <div class="view-receipe-title">
+                    <h2 class="text-center">View All Receipe</h2>
+                </div>
+                <div class="search-field">
+                    <input type="text" name="live-search" id="liveSearch">
+                </div>
+                <div id=" receipeContent" class="receipe-content">
+                    <table border="1">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Name</th>
+                                <th>Ingredients</th>
+                                <th>Description</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="receipeBody">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer></footer>
+
+    <script>
+
+        const liveSearch = document.getElementById("liveSearch");
+
+        let allReceipeData = JSON.parse(localStorage.getItem("Receipe") || "[]");
+
+        let filterReceipe = [...allReceipeData];
+
+        liveSearch.addEventListener('keyup', e => {
+            filterReceipe = allReceipeData.filter(receipe => receipe.ingredients.toLowerCase().includes(e.target.value));
+
+            renderTable(filterReceipe);
+        })
+
+
+        function getReceipeData() {
+            let allReceipeData = JSON.parse(localStorage.getItem("Receipe") || "[]");
+
+            const receipeBody = document.getElementById("receipeBody");
+            const receipeContent = document.getElementById("receipContent");
+
+            if (allReceipeData.length === 0) {
+                receipeBody.innerHTML = `
+                    <p>No Data Found. To Add Data <a href="/addReceipe.html">Click</a></p>
+
+                `;
+            }
+
+            allReceipeData.map((data, idx) => {
+                receipeBody.innerHTML += `
+                    <tr>
+                    <td>${idx + 1}</td>
+                    <td>${data.name}</td>
+                    <td>${data.ingredients}</td>
+                    <td>${data.description}</td>
+                    <td>
+                        <button onClick="setIdToLocalStorage(${data.id})">Edit</button>
+                        <button onClick="deleteReceipe(${data.id})">Delete</button>
+                    </td>
+                </tr>
+                `;
+            })
+        };
+
+        getReceipeData(event);
+
+        function deleteReceipe(id) {
+            let allReceipeData = JSON.parse(localStorage.getItem("Receipe") || []);
+
+            allReceipeData = allReceipeData.filter((data, idx) => {
+                return data.id !== id;
+            });
+
+            localStorage.setItem("Receipe", JSON.stringify(allReceipeData));
+
+            window.location.href = "/view.html";
+        }
+
+        function setIdToLocalStorage(id) {
+            localStorage.setItem("editId", JSON.stringify(id));
+
+            window.location.href = "/editReceipe.html"
+        }
+
+        function renderTable(filterReceipe) {
+
+            const receipeBody = document.getElementById("receipeBody");
+
+            receipeBody.innerHTML = "";
+
+            if (filterReceipe.length === 0) {
+                receipeBody.innerHTML = `
+                    <p>No Data Found. To Add Data <a href="/addReceipe.html">Click</a></p>
+                `;
+            }
+
+            filterReceipe.map((data, idx) => {
+                receipeBody.innerHTML += `
+                    <tr>
+                    <td>${idx + 1}</td>
+                    <td>${data.name}</td>
+                    <td>${data.ingredients}</td>
+                    <td>${data.description}</td>
+                    <td>
+                        <button onClick="setIdToLocalStorage(${data.id})">Edit</button>
+                        <button onClick="deleteReceipe(${data.id})">Delete</button>
+                    </td>
+                </tr>
+                `;
+            })
+        }
+    </script>
+</body>
+
+</html>

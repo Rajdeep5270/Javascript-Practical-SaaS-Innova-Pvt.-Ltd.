@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Receipe Page</title>
+
+    <!-- main css  -->
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+
+<body>
+
+    <header>
+        <section class="navbar">
+            <div class="container">
+                <div class="navbar-content d-flex justify-between align-center">
+                    <h2>LOGO</h2>
+
+                    <nav>
+                        <ul class="d-flex">
+                            <li><a href="addReceipe.html">Add</a></li>
+                            <li><a href="view.html">View</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <main>
+        <section class="edit-receipe py text-center">
+            <div class="container">
+                <div class="edit-receipe-content">
+                    <div class="edit-receipe-title">
+                        <h2>Edit Receipe</h2>
+                    </div>
+                    <div class="edit-receipe-info">
+                        <form onsubmit="onFormSubmit(event)">
+                            <!-- receipe name  -->
+                            <div class="input-fields">
+                                <label for="receipe-name">Receipe Name</label>
+                                <input type="text" id="receipeName" name="receipe-name">
+                            </div>
+
+                            <!-- receipe ingredients  -->
+                            <div class="input-fields">
+                                <label for="receipeIngredients">Receipe Ingredients</label>
+                                <input type="text" id="receipeIngredients" name="receipe-ingredients">
+                            </div>
+
+                            <!-- receipe description  -->
+                            <div class="input-fields">
+                                <label for="receipeDescription">Receipe Description</label>
+                                <textarea name="receipe-description" id="receipeDescription"></textarea>
+                            </div>
+
+                            <!-- receipe ingredients  -->
+                            <div class="input-fields">
+                                <button type="submit">Add Receipe</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        let editId = Number(localStorage.getItem("editId"));
+
+        let allReceipeData = JSON.parse(localStorage.getItem("Receipe") || "[]");
+
+        const receipe = allReceipeData.find(data => data.id === editId);
+
+        if (!receipe) {
+            alert("Receipe Not Found");
+        }
+
+        const receipeName = document.getElementById("receipeName");
+        const receipeIngredients = document.getElementById("receipeIngredients");
+        const receipeDescription = document.getElementById("receipeDescription");
+
+        console.log(receipe);
+
+        receipeName.value = receipe.name;
+        receipeIngredients.value = receipe.ingredients
+        receipeDescription.value = receipe.description
+
+        function onFormSubmit(e) {
+            e.preventDefault();
+
+            const editReceipe = {
+                id: editId,
+                name: receipeName.value,
+                ingredients: receipeIngredients.value,
+                description: receipeDescription.value
+            }
+
+            allReceipeData = allReceipeData.map((data) => {
+                if (data.id === editId) {
+                    return editReceipe;
+                }
+                else {
+                    return data;
+                }
+            });
+
+            localStorage.setItem("Receipe", JSON.stringify(allReceipeData));
+
+            window.location.href = "/view.html"
+        }
+    </script>
+
+</body>
+
+</html>

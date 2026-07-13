@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.py {
+    padding: 100px 0;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* navbar section  */
+
+.navbar {
+    padding: 30px 0;
+    background-color: orangered;
+    color: white;
+}
+
+.navbar .navbar-content nav ul li a {
+    margin: 0 20px;
+    color: white;
+}
+
+/* add receipt section  */
+
+.add-receipe .add-receipe-content .add-receipe-title h2 {
+    font-size: 50px;
+}
+
+.add-receipe .add-receipe-content .add-receipe-info {
+    margin: 50px 0;
+}
+
+.add-receipe .add-receipe-content .add-receipe-info .input-fields {
+    margin: 20px;
+}
+
+/* view receipe page  */
+
+.view-all-receipe .view-receipe-title h2 {
+    font-size: 40px;
+    margin: 50px 0;
+}
