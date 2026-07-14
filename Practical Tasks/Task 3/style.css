@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.py {
+    padding: 100px 0;
+}
+
+/* table view section  */
+
+.table-view .table-title h2 {
+    font-size: 40px;
+    text-align: center;
+}
+
+.table-view .searching {
+    float: right;
+}
+
+.table-view .searching input {
+    padding: 5px 0;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid gray;
+}
+
+.table-view .searching button {
+    padding: 5px 20px;
+    border: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    transition: all 0.3s ease-in-out;
+    border-radius: 10px;
+}
+
+.table-view .searching button:hover {
+    background-color: lightgray;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.table-view .table-content {
+    margin: 50px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.table-view .table-content table thead tr th,
+.table-view .table-content table tbody tr td {
+    border: 1px solid black;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
