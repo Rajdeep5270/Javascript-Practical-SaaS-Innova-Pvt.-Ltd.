@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task For String</title>
+    <title>Implementing A Text Analysis Tool</title>
 
     <!-- main css  -->
     <link rel="stylesheet" href="style.css" type="text/css">
@@ -17,6 +17,22 @@
     <main>
         <section class="input-field">
             <input type="text" name="word-analyzer" id="wordAnalyzer">
+            <button onclick="wordFrequency()">Click to Calculate Frequency</button>
+        </section>
+
+        <section>
+            <h2>Total Length</h2>
+            <p id="totalLengthValue"></p>
+        </section>
+
+        <section>
+            <h2>Word Count</h2>
+            <p id="totalLengthWord"></p>
+        </section>
+
+        <section>
+            <h2>Frequency of Words</h2>
+            <p id="wordFrequency"></p>
         </section>
     </main>
 
