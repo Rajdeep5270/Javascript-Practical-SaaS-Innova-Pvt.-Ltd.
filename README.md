@@ -47,24 +47,6 @@ Javascript Practice Tasks/
         └── style.css
 ```
 
----
-
-## 📚 Included Practical Tasks
-
-### 1. 🧾 Recipe Management System
-A simple web application for adding, editing, and viewing recipes.
-
-### 2. ✅ Simple Task Manager Application
-A basic task manager to organize daily activities.
-
-### 3. 🔤 Task For String
-A practice task focused on working with strings and JavaScript logic.
-
-### 4. 💡 Practical Task 3
-An additional JavaScript exercise to improve coding skills and problem-solving.
-
----
-
 ## 🛠️ Skills Practiced
 
 - Variables, functions, and loops
