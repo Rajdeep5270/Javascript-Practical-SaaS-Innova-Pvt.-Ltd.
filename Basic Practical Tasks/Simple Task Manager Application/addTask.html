@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Task Manager Application</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        a {
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <section class="navbar" style="padding: 30px 0;">
+            <div class="container">
+                <div class="navbar-content" style="display: flex; justify-content: center; align-items: center;">
+                    <h2>Task Manager Application</h2>
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <main>
+        <!-- add section  -->
+        <section class="add" style="padding: 100px 0;">
+            <div class="container">
+                <div class="add-content">
+                    <div class="add-task-title">
+                        <h2 style="font-size: 40px; text-align: center;">Add Task</h2>
+                    </div>
+                    <div class="add-task-form">
+                        <form onsubmit="onFormSubmit(event)" style="text-align: center; margin: 50px 0;">
+                            <div>
+                                <!-- <label for="tDescription"
+                                    style="display: block; font-size: 18px; margin: 0 0 10px 0;">Task
+                                    Description</label> -->
+                                <textarea id="tDescription" style="width: 50%; background-color: aquamarine;"
+                                    placeholder="Enter Your Task Here" required></textarea>
+                            </div>
+                            <div style="margin: 20px 0;">
+                                <label for="tStatus">Status : </label>
+                                <select id="tStatus" style="width: 20%; padding: 5px 20px; background-color: aqua;"
+                                    required>
+                                    <option value="Completed">Completed</option>
+                                    <option value="Pending">Pending</option>
+                                </select>
+                            </div>
+                            <div>
+                                <button type="submit"
+                                    style="padding: 10px 20px; background-color: chartreuse; border-radius: 10px;">Add
+                                    Task</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- view Task Section  -->
+        <section class="view" style="padding: 100px 0;">
+            <div class="container">
+                <div class="view-content">
+                    <div class="view-title">
+                        <h2 style="font-size: 40px; text-align: center; margin:  50px 0 ;">View Tasks</h2>
+                    </div>
+                    <div>
+                        <button onclick="filterData('completed')">Completed</button>
+                        <button onclick="filterData('pending')">Pending</button>
+                        <button onclick="filterData('')">All</button>
+                    </div>
+                    <div class="view-task-info">
+                        <table border="2" style="position: relative;  left: 50%; transform: translate(-50%,0);">
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Task</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tBody">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer></footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
