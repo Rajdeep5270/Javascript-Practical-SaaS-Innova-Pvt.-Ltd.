@@ -5,21 +5,25 @@ const tBody = document.getElementById("tBody");
 const search = document.getElementById("search");
 
 async function getData() {
-    const res = await fetch(URL);
+    try {
+        const res = await fetch(URL);
 
-    let data = await res.json();
+        let data = await res.json();
 
-    search.addEventListener('keyup', e => {
-        let liveSearch = e.target.value.toLowerCase();
+        search.addEventListener('keyup', e => {
+            let liveSearch = e.target.value.toLowerCase();
 
-        let filteredData = data.filter((value) => value.name.toLowerCase().includes(liveSearch));
+            let filteredData = data.filter((value) => value.name.toLowerCase().includes(liveSearch));
 
-        renderTable(filteredData);
-    });
+            renderTable(filteredData);
+        });
 
-    tBody.innerHTML = "";
+        tBody.innerHTML = "";
 
-    renderTable(data);
+        renderTable(data);
+    } catch (err) {
+        console.log("Error : ", err);
+    }
 }
 
 getData();
