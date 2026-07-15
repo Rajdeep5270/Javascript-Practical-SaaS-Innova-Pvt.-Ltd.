@@ -16,11 +16,11 @@
         <section class="navbar">
             <div class="container">
                 <div class="navbar-content d-flex justify-between align-center">
-                    <h2>LOGO</h2>
+                    <h2>R M S</h2>
 
                     <nav>
                         <ul class="d-flex">
-                            <li><a href="addReceipe.html">Add</a></li>
+                            <li><a href="index.html">Add</a></li>
                             <li><a href="view.html">View</a></li>
                         </ul>
                     </nav>
@@ -37,7 +37,7 @@
                     <h2 class="text-center">View All Receipe</h2>
                 </div>
                 <div class="search-field">
-                    <input type="text" name="live-search" id="liveSearch">
+                    <input type="text" name="live-search" id="liveSearch" placeholder="search here...">
                 </div>
                 <div id=" receipeContent" class="receipe-content">
                     <table border="1">
@@ -82,30 +82,32 @@
             const receipeBody = document.getElementById("receipeBody");
             const receipeContent = document.getElementById("receipContent");
 
-            if (allReceipeData.length === 0) {
-                receipeBody.innerHTML = `
-                    <p>No Data Found. To Add Data <a href="/addReceipe.html">Click</a></p>
+            // if (allReceipeData.length === 0) {
+            //     receipeBody.innerHTML = `
+            //         <p>No Data Found. To Add Data <a href="/index.html">Click</a></p>
 
-                `;
-            }
+            //     `;
+            // }
 
-            allReceipeData.map((data, idx) => {
-                receipeBody.innerHTML += `
-                    <tr>
-                    <td>${idx + 1}</td>
-                    <td>${data.name}</td>
-                    <td>${data.ingredients}</td>
-                    <td>${data.description}</td>
-                    <td>
-                        <button onClick="setIdToLocalStorage(${data.id})">Edit</button>
-                        <button onClick="deleteReceipe(${data.id})">Delete</button>
-                    </td>
-                </tr>
-                `;
-            })
+            // allReceipeData.map((data, idx) => {
+            //     receipeBody.innerHTML += `
+            //         <tr>
+            //         <td>${idx + 1}</td>
+            //         <td>${data.name}</td>
+            //         <td>${data.ingredients}</td>
+            //         <td>${data.description}</td>
+            //         <td>
+            //             <button onClick="setIdToLocalStorage(${data.id})">Edit</button>
+            //             <button onClick="deleteReceipe(${data.id})">Delete</button>
+            //         </td>
+            //     </tr>
+            //     `;
+            // })
+
+            renderTable(allReceipeData);
         };
 
-        getReceipeData(event);
+        getReceipeData();
 
         function deleteReceipe(id) {
             let allReceipeData = JSON.parse(localStorage.getItem("Receipe") || []);
@@ -133,7 +135,7 @@
 
             if (filterReceipe.length === 0) {
                 receipeBody.innerHTML = `
-                    <p>No Data Found. To Add Data <a href="/addReceipe.html">Click</a></p>
+                    <p>No Data Found. To Add Data <a href="/index.html">Click</a></p>
                 `;
             }
 
