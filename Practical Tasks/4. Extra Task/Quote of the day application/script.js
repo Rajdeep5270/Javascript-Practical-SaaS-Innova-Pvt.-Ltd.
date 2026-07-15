@@ -1,11 +1,36 @@
 const URL = "https://dummyjson.com/quotes";
 
+const displayQuotes = document.getElementById("displayQuotes");
+
 const fetchData = async () => {
-    const response = await fetch(URL);
+    try {
+        let loader = true;
 
-    const data = await response.json();
+        if (loader) {
+            displayQuotes.innerHTML = `
+            <p>Loading...</p> 
+        `;
+        }
 
-    console.log(data);
+        const response = await fetch(URL);
+
+        const data = await response.json();
+
+        const randomQuote = Math.floor(Math.random() * 30);
+
+        loader = false;
+
+        // console.log(data);
+
+        if (!loader) {
+            displayQuotes.innerHTML = `
+             <p>${data.quotes[randomQuote].quote}</p>
+            <h2>~${data.quotes[randomQuote].author}</h2>
+         `;
+        }
+    } catch (err) {
+        console.log("Display Quotes Error : ", err);
+    }
 }
 
 fetchData();
