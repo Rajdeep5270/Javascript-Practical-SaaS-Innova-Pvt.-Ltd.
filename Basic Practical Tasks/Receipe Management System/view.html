@@ -110,7 +110,7 @@
         getReceipeData();
 
         function deleteReceipe(id) {
-            let allReceipeData = JSON.parse(localStorage.getItem("Receipe") || []);
+            let allReceipeData = JSON.parse(localStorage.getItem("Receipe") || "[]");
 
             allReceipeData = allReceipeData.filter((data, idx) => {
                 return data.id !== id;
