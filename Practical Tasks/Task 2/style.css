@@ -35,6 +35,10 @@ li {
     justify-content: space-between;
 }
 
+.justify-around {
+    justify-content: space-around;
+}
+
 .justify-center {
     justify-content: center;
 }
@@ -68,4 +72,85 @@ h6 {
 
 .navbar .navbar-content nav ul li a {
     margin: 0 20px;
+    cursor: pointer;
+}
+
+/* add task section  */
+
+.add-task-form .add-content .add-title h2 {
+    font-size: 40px;
+    margin-bottom: 40px;
+}
+
+.add-task-form .add-content .add-info p {
+    font-size: 30px;
+}
+
+.add-task-form .add-content .add-info input {
+    width: 50%;
+    margin: 20px 0;
+    height: 40px;
+    outline: none;
+    font-size: 20px;
+    border: none;
+    border-bottom: 2px solid black;
+    transition: all 0.3s ease-in-out;
+}
+
+.add-task-form .add-content .add-info input:hover {
+    border-bottom: 2px solid lightcyan;
+}
+
+.add-task-form .add-content .add-info button {
+    padding: 10px 30px;
+    border-radius: 10px;
+    border: 2px solid black;
+    transition: all 0.3s ease-in-out;
+}
+
+.add-task-form .add-content .add-info button:hover {
+    border: 2px solid lightcyan;
+}
+
+/* view task section  */
+
+.view-task .view-content .view-title h2 {
+    font-size: 40px;
+}
+
+.view-task .view-content table {
+    width: 100%;
+    margin: 50px 0;
+}
+
+.view-task .view-content table thead tr,
+.view-task .view-content table tbody tr {
+    border-bottom: 2px solid var(--text-color);
+}
+
+.view-task .view-content table thead tr th,
+.view-task .view-content table tbody tr td {
+    border: none;
+    margin: 10px 0;
+}
+
+.view-task .view-content table tbody tr input[type="checkbox"] {
+    height: 25px;
+    width: 25px;
+}
+
+.view-task .view-content table tbody tr td button {
+    padding: 5px 10px;
+}
+
+.view-task .view-content table tbody tr td #edit {
+    background-color: yellow;
+    color: black;
+    border-radius: 5px;
+}
+
+.view-task .view-content table tbody tr td #delete {
+    background-color: red;
+    color: black;
+    border-radius: 5px;
 }

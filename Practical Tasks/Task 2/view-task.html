@@ -13,7 +13,6 @@
 <body>
 
     <header>
-        <!-- navbar section  -->
         <section class="navbar">
             <div class="container">
                 <div class="navbar-content d-flex justify-between align-center">
@@ -24,7 +23,7 @@
                     <nav>
                         <ul class="d-flex">
                             <li><a href="index.html">Add Task</a></li>
-                            <li><a href="view-task.html">View Task</a></li>
+                            <li><a href="view-task.html" id="viewTaskBtn">View Task</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -33,16 +32,26 @@
     </header>
 
     <main>
-        <section class="add-task-form py">
+        <!-- view task section  -->
+        <section class="view-task py">
             <div class="container">
-                <div class="add-content">
-                    <div class="add-title text-center">
-                        <h2>Add Task</h2>
+                <div class="view-content">
+                    <div class="view-title text-center">
+                        <h2>View Task</h2>
                     </div>
-                    <div class="add-info text-center">
-                        <input type="text" id="taskInput">
-                        <button id="taskAddBtn" onclick="addTask()">Add</button>
-                    </div>
+                    <table>
+                        <thead>
+                            <tr class="d-flex justify-between">
+                                <th>No.</th>
+                                <th>Task</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tBody">
+
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </section>
@@ -50,7 +59,8 @@
 
     <footer></footer>
 
-    <script src="add-script.js"></script>
+    <!-- main js  -->
+    <script src="view-script.js" type="text/javascript"></script>
 </body>
 
 </html>
