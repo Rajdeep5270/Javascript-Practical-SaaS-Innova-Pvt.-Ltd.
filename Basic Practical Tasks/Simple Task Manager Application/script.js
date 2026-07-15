@@ -1,3 +1,5 @@
+// comments are for debugging 
+
 let taskLists = [];
 
 // global variables used in 1 or more function 
@@ -12,27 +14,34 @@ const onFormSubmit = (e) => {
     // console.log(`Task Description = ${tDescription.value}`);
     // console.log(`Task Status = ${tStatus.value}`);
 
-
+    // if (updatedTaskId) {
+    //     taskLists.push({
+    //         id: updatedTaskId,
+    //         description: tDescription.value,
+    //         status: tStatus.value
+    //     });
+    // } else {
     taskLists.push({
         id: Math.floor(Math.random() * 1000),
         description: tDescription.value,
         status: tStatus.value
-    })
+    });
+    // }
 
     // console.log(taskLists)
 
     tDescription.value = "";
 
-    viewTaskLists();
+    viewTaskLists(taskLists);
 };
 
-const viewTaskLists = () => {
+const viewTaskLists = (data) => {
 
     tBody.innerHTML = "";
 
     // console.log(taskLists);
 
-    taskLists.map((task, idx) => {
+    data.map((task, idx) => {
         tBody.innerHTML += ` <tr>
                                     <td>${idx + 1}</td>
                                     <td>${task.description}</td>
@@ -60,11 +69,22 @@ const deleteTask = (id) => {
 const editTask = (editId) => {
     const editTask = taskLists.find(task => task.id === editId);
 
+    // console.log("Edit Task ID : ", editId);              
+
     taskLists = taskLists.filter((task) => task.id !== editId);
 
     tDescription.value = editTask.description;
 
-    viewTaskLists();
+    editTask.id = editId;
+    editTask.description = tDescription.value;
+
+    // console.log("After Update ID : ", editTask.id);    
+
+    // console.log(tDescription.value);
+
+    viewTaskLists(taskLists);
+
+    // onFormSubmit(event, editId);
 };
 
 const updateTask = (updateId) => {
@@ -83,7 +103,7 @@ const updateTask = (updateId) => {
     // for debug 
     // console.log("Task Status", task.status)
 
-    viewTaskLists();
+    viewTaskLists(taskLists);
 }
 
 const filterData = (filter) => {
@@ -93,19 +113,19 @@ const filterData = (filter) => {
 
     tBody.innerHTML = "";
 
-    filteredTasks.map((task, idx) => {
-        tBody.innerHTML += ` <tr>
-                                    <td>${idx + 1}</td>
-                                    <td>${task.description}</td>
-                                    <td>
-                                        <button onclick="updateTask(${task.id})" style="background-color:${(task.status === "Completed") ? "green" : "red"}">${task.status}</button>
-                                    </td>
-                                    <td>
-                                        <button onclick="editTask(${task.id})">Edit</button>
-                                        <button onclick="deleteTask(${task.id})">Delete</button>
-                                    </td>
-                                </tr>`;
-    });
+    // filteredTasks.map((task, idx) => {
+    //     tBody.innerHTML += ` <tr>
+    //                                 <td>${idx + 1}</td>
+    //                                 <td>${task.description}</td>
+    //                                 <td>
+    //                                     <button onclick="updateTask(${task.id})" style="background-color:${(task.status === "Completed") ? "green" : "red"}">${task.status}</button>
+    //                                 </td>
+    //                                 <td>
+    //                                     <button onclick="editTask(${task.id})">Edit</button>
+    //                                     <button onclick="deleteTask(${task.id})">Delete</button>
+    //                                 </td>
+    //                             </tr>`;
+    // });
 
-    // viewTaskLists(taskLists);
+    viewTaskLists(filteredTasks);
 }
