@@ -24,7 +24,7 @@ const onFormSubmit = (e) => {
     taskLists.push({
         id: Math.floor(Math.random() * 1000),
         description: tDescription.value,
-        status: tStatus.value
+        status: "Pending"
     });
     // }
 
