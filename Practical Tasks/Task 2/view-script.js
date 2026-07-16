@@ -1,6 +1,6 @@
 // comments are for debugging 
 
-let tasks = JSON.parse(localStorage.getItem('tasks') || "[]");
+let tasks = JSON.parse(localStorage.getItem('tasks'));
 
 function viewTask() {
     const tBody = document.getElementById("tBody");
@@ -15,8 +15,8 @@ function viewTask() {
         tBody.innerHTML += `
                             <tr class="d-flex justify-between">
                                 <td>${idx + 101}</td>
-                                <td>${ele.task}</td>
-                                <td><input type="checkbox"></td>
+                                <td style="text-decoration:${ele.status ? 'line-through black 5px;' : ''}">${ele.task}</td>
+                                <td><input type="checkbox" id="taskCheckBox" onclick="taskStatus(${ele.id})" ${(ele.status) ? 'checked' : ''}></td>
                                 <td>
                                     <button id="edit" onclick="editTask(${ele.id})">Edit</button>
                                     <button id="delete" onclick="deleteTask(${ele.id})">Delete</button>
@@ -46,4 +46,28 @@ const editTask = (editId) => {
     localStorage.setItem("editId", JSON.stringify(editId));
 
     window.location.href = "/edit-task.html";
+}
+
+function taskStatus(statusId) {
+    // console.log("Status ID : ", statusId);
+
+    const statusUpdateTask = tasks.find(task => task.id === statusId);
+
+    // console.log(statusUpdateTask);
+
+    statusUpdateTask.status = !statusUpdateTask.status;
+
+    tasks = tasks.filter(val => val.id !== statusId)
+
+    tasks.push(statusUpdateTask);
+
+    // console.log(statusUpdateTask.status);
+
+    // console.log(statusUpdateTask);
+
+    // console.log(tasks);
+
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+
+    window.location.href = "/view-task.html";
 }

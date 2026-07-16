@@ -7,7 +7,8 @@ function addTask() {
 
     tasks.push({
         id: Math.floor(Math.random() * 1000),
-        task: taskInput.value
+        task: taskInput.value,
+        status: false
     })
 
     console.log(tasks);
