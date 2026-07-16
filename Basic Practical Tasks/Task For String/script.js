@@ -1,4 +1,8 @@
+// comment are for debugging 
+
 const wordAnalyzer = document.getElementById("wordAnalyzer");
+
+// let count = 1;
 
 wordAnalyzer.addEventListener('keyup', e => {
     let search = e.target.value;
@@ -11,11 +15,17 @@ wordAnalyzer.addEventListener('keyup', e => {
 function countCharacters(value) {
     const printLength = document.getElementById("totalLengthValue");
 
+    // if (value !== " ") {
+    //     count++;
+    // }
+
+    for (let i = 0; i < printLength.length; i++) {
+        console.log(printLength[i]);
+    }
+
     printLength.innerText = "";
 
-    const totalLength = value.length;
-
-    printLength.innerText = totalLength;
+    printLength.innerText = value.length;
 }
 
 function countWords(value) {
@@ -34,6 +44,8 @@ function wordFrequency() {
     const splittedText = value.split(" ");
 
     // console.log(splittedText);
+
+    wordFrequency.innerText = "";
 
     for (let i = 0; i < splittedText.length; i++) {
 
