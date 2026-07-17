@@ -1,3 +1,4 @@
+// this is question answe and correct answer array of obj 
 const questionsObj = [
     {
         id: 101,
@@ -195,6 +196,7 @@ const heading = document.getElementById("heading");
 const currentScore = document.getElementById("currentScore");
 const liveQuestions = document.getElementById("liveQuestions");
 
+// to load question first time automatically calls and then when click on next button 
 function loadQuestion() {
     const currentQuestion = questionsObj[currentIndex];
     const currentOption = questionsObj[currentIndex].answer;
@@ -217,6 +219,7 @@ function loadQuestion() {
 
 loadQuestion();
 
+// when the answer is checked then it will work after clicking on next button 
 function nextQuestion() {
     const selectedOption = document.querySelector("input[name='option']:checked");
 
@@ -242,6 +245,7 @@ function nextQuestion() {
     };
 }
 
+// this is live rendering like state in react when you click on options in quiz it will call and check the answer and give live result 
 function scoreCount() {
     const selectedOption = document.querySelector("input[name='option']:checked");
 
@@ -279,6 +283,7 @@ function scoreCount() {
     }
 }
 
+// when you have completed your task then a submit button appears when you click on it the exam will submit and you can see your score 
 function displayResultFunc() {
     alert("Contratulations you have completed test");
 
@@ -317,6 +322,7 @@ function displayResultFunc() {
 
 displayButtons();
 
+// display button live at the bottom that shows you at which question you are 
 function displayButtons() {
     questionsObj.forEach((_, idx) => {
         liveQuestions.innerHTML += `
