@@ -1,0 +1,76 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: var(--text-color);
+    font-family: "Cormorant Garamond", serif;
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.py {
+    padding: 100px 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Black Ops One", system-ui;
+}
+
+/* navbar section  */
+.navbar {
+    padding: 40px 0;
+}
+
+/* count down section  */
+.count-down .count-down-content input {
+    width: 10%;
+    height: 30px;
+    outline: none;
+    margin: 0 0 10px 0;
+    font-size: 18px;
+}
+
+.count-down .count-down-content button {
+    padding: 5px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 10px;
+}
