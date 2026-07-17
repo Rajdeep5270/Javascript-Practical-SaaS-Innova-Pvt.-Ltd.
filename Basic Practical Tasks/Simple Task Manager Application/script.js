@@ -7,28 +7,25 @@ const tBody = document.getElementById("tBody");
 const tDescription = document.getElementById("tDescription");
 const tStatus = document.getElementById("tStatus");
 
+const addTaskBtn = document.getElementById("addTaskBtn");
+const updateTaskBtn = document.getElementById("updateTaskBtn");
 
-const onFormSubmit = (e) => {
+const onFormSubmit = (e, id, status) => {
     e.preventDefault();
 
-    // console.log(`Task Description = ${tDescription.value}`);
-    // console.log(`Task Status = ${tStatus.value}`);
-
-    // if (updatedTaskId) {
-    //     taskLists.push({
-    //         id: updatedTaskId,
-    //         description: tDescription.value,
-    //         status: tStatus.value
-    //     });
-    // } else {
-    taskLists.push({
-        id: Math.floor(Math.random() * 1000),
-        description: tDescription.value,
-        status: "Pending"
-    });
-    // }
-
-    // console.log(taskLists)
+    if (!id) {
+        taskLists.push({
+            id: Math.floor(Math.random() * 1000),
+            description: tDescription.value,
+            status: "Pending"
+        });
+    } else {
+        taskLists.push({
+            id,
+            description: tDescription.value,
+            status
+        });
+    }
 
     tDescription.value = "";
 
@@ -39,14 +36,16 @@ const viewTaskLists = (data) => {
 
     tBody.innerHTML = "";
 
-    // console.log(taskLists);
+    if (data.length < 1) {
+        tBody.innerHTML = "No Data Found";
+    }
 
     data.map((task, idx) => {
         tBody.innerHTML += ` <tr>
                                     <td>${idx + 1}</td>
                                     <td>${task.description}</td>
                                     <td>
-                                        <button onclick="updateTask(${task.id})" style="background-color:${(task.status === "Completed") ? "green" : "red"}">${task.status}</button>
+                                        <button onclick="updateTaskStatus(${task.id})" style="background-color:${(task.status === "Completed") ? "green" : "red"}">${task.status}</button>
                                     </td>
                                     <td>
                                         <button onclick="editTask(${task.id})">Edit</button>
@@ -57,42 +56,40 @@ const viewTaskLists = (data) => {
 };
 
 const deleteTask = (id) => {
-    // console.log("Task ID : ", id);
-
-    tBody.innerHTML = "";
-
     taskLists = taskLists.filter(task => task.id !== id);
 
     viewTaskLists(taskLists);
 };
 
 const editTask = (editId) => {
-    const editTask = taskLists.find(task => task.id === editId);
-
-    // console.log("Edit Task ID : ", editId);              
+    const task = findTask(editId);
 
     taskLists = taskLists.filter((task) => task.id !== editId);
 
-    tDescription.value = editTask.description;
+    tDescription.value = task.description;
 
-    editTask.id = editId;
-    editTask.description = tDescription.value;
+    addTaskBtn.style.display = "none";
 
-    // console.log("After Update ID : ", editTask.id);    
+    updateTaskBtn.style.display = "block";
 
-    // console.log(tDescription.value);
+    updateTaskBtn.addEventListener('click', e => {
+        if (tDescription.value === "") {
+            alert("Please fill all details");
+            return;
+        }
 
-    viewTaskLists(taskLists);
+        onFormSubmit(event, editId, task.status);
 
-    // onFormSubmit(event, editId);
+        updateTaskBtn.style.display = "none";
+
+        addTaskBtn.style.display = "block";
+
+        viewTaskLists(taskLists);
+    });
 };
 
-const updateTask = (updateId) => {
-    // console.log("Update ID : ", updateId);
-
-    const task = taskLists.find((task) => task.id === updateId);
-
-    // console.log("Task Status : ", task.status);
+const updateTaskStatus = (updateStatusId) => {
+    const task = findTask(updateStatusId);
 
     if (task.status === "Completed") {
         task.status = "Pending"
@@ -100,32 +97,16 @@ const updateTask = (updateId) => {
         task.status = "Completed"
     }
 
-    // for debug 
-    // console.log("Task Status", task.status)
-
     viewTaskLists(taskLists);
-}
+};
 
 const filterData = (filter) => {
-    // console.log("Filter : ", filter);
-
     const filteredTasks = taskLists.filter(task => task.status.toLowerCase().includes(filter.toLowerCase()));
 
-    tBody.innerHTML = "";
-
-    // filteredTasks.map((task, idx) => {
-    //     tBody.innerHTML += ` <tr>
-    //                                 <td>${idx + 1}</td>
-    //                                 <td>${task.description}</td>
-    //                                 <td>
-    //                                     <button onclick="updateTask(${task.id})" style="background-color:${(task.status === "Completed") ? "green" : "red"}">${task.status}</button>
-    //                                 </td>
-    //                                 <td>
-    //                                     <button onclick="editTask(${task.id})">Edit</button>
-    //                                     <button onclick="deleteTask(${task.id})">Delete</button>
-    //                                 </td>
-    //                             </tr>`;
-    // });
-
     viewTaskLists(filteredTasks);
-}
+};
+
+// find task function 
+const findTask = (findId) => {
+    return taskLists.find(task => task.id === findId);
+};

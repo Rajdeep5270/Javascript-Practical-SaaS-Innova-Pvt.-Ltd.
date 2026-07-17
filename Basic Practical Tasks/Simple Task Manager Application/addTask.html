@@ -48,7 +48,7 @@
             <div class="container">
                 <div class="add-content">
                     <div class="add-task-title">
-                        <h2 style="font-size: 40px; text-align: center;">Add Task</h2>
+                        <h2 style="font-size: 40px; text-align: center;">Task</h2>
                     </div>
                     <div class="add-task-form">
                         <form onsubmit="onFormSubmit(event)" style="text-align: center; margin: 50px 0;">
@@ -68,8 +68,12 @@
                                 </select>
                             </div> -->
                             <div>
-                                <button type="submit"
-                                    style="padding: 10px 20px; background-color: chartreuse; border-radius: 10px;">Add
+                                <button id="addTaskBtn" type="submit"
+                                    style="padding: 10px 20px; background-color: chartreuse; border-radius: 10px; float: right;">Add
+                                    Task</button>
+
+                                <button id="updateTaskBtn"
+                                    style="padding: 10px 20px; background-color: chartreuse; border-radius: 10px; display: none; float: right;">Update
                                     Task</button>
                             </div>
                         </form>
