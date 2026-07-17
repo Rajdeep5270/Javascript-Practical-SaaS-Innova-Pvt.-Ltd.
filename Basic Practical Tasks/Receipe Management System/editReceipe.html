@@ -75,15 +75,9 @@
 
         const receipe = allReceipeData.find(data => data.id === editId);
 
-        if (!receipe) {
-            alert("Receipe Not Found");
-        }
-
         const receipeName = document.getElementById("receipeName");
         const receipeIngredients = document.getElementById("receipeIngredients");
         const receipeDescription = document.getElementById("receipeDescription");
-
-        console.log(receipe);
 
         receipeName.value = receipe.name;
         receipeIngredients.value = receipe.ingredients

@@ -62,64 +62,21 @@
     <footer></footer>
 
     <script>
-
-        const liveSearch = document.getElementById("liveSearch");
-
         let allReceipeData = JSON.parse(localStorage.getItem("Receipe") || "[]");
 
         let filterReceipe = [...allReceipeData];
 
-        liveSearch.addEventListener('keyup', e => {
+        document.getElementById("liveSearch").addEventListener('keyup', e => {
             filterReceipe = allReceipeData.filter(receipe => receipe.ingredients.toLowerCase().includes(e.target.value));
 
             renderTable(filterReceipe);
         })
 
-
         function getReceipeData() {
-            let allReceipeData = JSON.parse(localStorage.getItem("Receipe") || "[]");
-
-            const receipeBody = document.getElementById("receipeBody");
-            const receipeContent = document.getElementById("receipContent");
-
-            // if (allReceipeData.length === 0) {
-            //     receipeBody.innerHTML = `
-            //         <p>No Data Found. To Add Data <a href="/index.html">Click</a></p>
-
-            //     `;
-            // }
-
-            // allReceipeData.map((data, idx) => {
-            //     receipeBody.innerHTML += `
-            //         <tr>
-            //         <td>${idx + 1}</td>
-            //         <td>${data.name}</td>
-            //         <td>${data.ingredients}</td>
-            //         <td>${data.description}</td>
-            //         <td>
-            //             <button onClick="setIdToLocalStorage(${data.id})">Edit</button>
-            //             <button onClick="deleteReceipe(${data.id})">Delete</button>
-            //         </td>
-            //     </tr>
-            //     `;
-            // })
-
             renderTable(allReceipeData);
         };
 
         getReceipeData();
-
-        function deleteReceipe(id) {
-            let allReceipeData = JSON.parse(localStorage.getItem("Receipe") || "[]");
-
-            allReceipeData = allReceipeData.filter((data, idx) => {
-                return data.id !== id;
-            });
-
-            localStorage.setItem("Receipe", JSON.stringify(allReceipeData));
-
-            window.location.href = "/view.html";
-        }
 
         function setIdToLocalStorage(id) {
             localStorage.setItem("editId", JSON.stringify(id));
@@ -153,6 +110,16 @@
                 </tr>
                 `;
             })
+        }
+
+        function deleteReceipe(id) {
+            allReceipeData = allReceipeData.filter((data, idx) => {
+                return data.id !== id;
+            });
+
+            localStorage.setItem("Receipe", JSON.stringify(allReceipeData));
+
+            window.location.href = "/view.html";
         }
     </script>
 </body>

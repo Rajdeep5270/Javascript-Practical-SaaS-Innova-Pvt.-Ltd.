@@ -22,7 +22,7 @@
                     <nav>
                         <ul class="d-flex">
                             <li><a href="index.html">Add</a></li>
-                            <li><a href="view.html" onclick="getReceipeData(event)">View</a></li>
+                            <li><a href="view.html" onclick="getReceipeData()">View</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -84,14 +84,12 @@
 
             console.log(receipe);
 
-            const receipeData = {
+            receipe.push({
                 id: Math.floor(Math.random() * 1000),
                 name: receipeName.value,
                 ingredients: receipeIngredients.value,
                 description: receipeDescription.value
-            }
-
-            receipe.push(receipeData);
+            });
 
             localStorage.setItem("Receipe", JSON.stringify(receipe));
 
