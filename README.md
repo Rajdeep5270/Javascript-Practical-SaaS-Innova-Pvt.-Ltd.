@@ -29,8 +29,8 @@ These practical tasks helped me strengthen my understanding of:
 Javascript Practice Tasks/
 ├── Basic Practical Tasks/
 │   ├── Receipe Management System/
-│   │   ├── addReceipe.html
 │   │   ├── editReceipe.html
+│   │   ├── index.html
 │   │   ├── style.css
 │   │   └── view.html
 │   ├── Simple Task Manager Application/
@@ -41,6 +41,27 @@ Javascript Practice Tasks/
 │       ├── script.js
 │       └── style.css
 └── Practical Tasks/
+    ├── 4. Extra Task/
+    │   ├── Quiz application task/
+    │   │   ├── index.html
+    │   │   ├── script.js
+    │   │   └── style.css
+    │   └── Quote of the day application/
+    │       ├── index.html
+    │       ├── script.js
+    │       └── style.css
+    ├── Task 1/
+    │   ├── index.html
+    │   ├── script.js
+    │   └── style.css
+    ├── Task 2/
+    │   ├── add-script.js
+    │   ├── edit-script.js
+    │   ├── edit-task.html
+    │   ├── index.html
+    │   ├── style.css
+    │   ├── view-script.js
+    │   └── view-task.html
     └── Task 3/
         ├── index.html
         ├── script.js
