@@ -1,6 +1,6 @@
 // comments are for debugging 
 
-let tasks = JSON.parse(localStorage.getItem('tasks'));
+let tasks = JSON.parse(localStorage.getItem('tasks') || "[]");
 
 function viewTask() {
     const tBody = document.getElementById("tBody");
@@ -23,8 +23,6 @@ function viewTask() {
                                 </td>
                             </tr>
         `;
-
-        // console.log(ele, idx)
     });
 }
 
@@ -53,19 +51,11 @@ function taskStatus(statusId) {
 
     const statusUpdateTask = tasks.find(task => task.id === statusId);
 
-    // console.log(statusUpdateTask);
-
     statusUpdateTask.status = !statusUpdateTask.status;
 
     tasks = tasks.filter(val => val.id !== statusId)
 
     tasks.push(statusUpdateTask);
-
-    // console.log(statusUpdateTask.status);
-
-    // console.log(statusUpdateTask);
-
-    // console.log(tasks);
 
     localStorage.setItem("tasks", JSON.stringify(tasks));
 
