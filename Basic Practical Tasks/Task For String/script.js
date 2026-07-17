@@ -2,50 +2,57 @@
 
 const wordAnalyzer = document.getElementById("wordAnalyzer");
 
-// let count = 1;
+const totalLengthCharacters = document.getElementById("totalLengthCharacters");
+const totalLengthWord = document.getElementById("totalLengthWord");
+const displayWordFrequency = document.getElementById("displayWordFrequency");
 
-wordAnalyzer.addEventListener('keyup', e => {
-    let search = e.target.value;
+document.getElementById("analyzeBtn").addEventListener('click', e => {
+    const val = wordAnalyzer.value;
 
-    countCharacters(search)
+    countCharacters(val);
 
-    countWords(search);
+    countWords(val);
+
+    wordFrequency(val);
 });
 
-function countCharacters(value) {
-    const printLength = document.getElementById("totalLengthValue");
+let count = 0;
 
-    // if (value !== " ") {
-    //     count++;
-    // }
+const countCharacters = (val) => {
+    count = 0;
 
-    for (let i = 0; i < printLength.length; i++) {
-        console.log(printLength[i]);
+    for (let i = 0; i < val.length; i++) {
+        if (val[i] !== " ") {
+            count++;
+        }
     }
 
-    printLength.innerText = "";
-
-    printLength.innerText = value.length;
+    totalLengthCharacters.innerText = count;
 }
 
-function countWords(value) {
-    const printCount = document.getElementById("totalLengthWord");
+function countWords(val) {
+    count = 0;
+    val = val.split(" ");
 
-    value = value.split(" ");
+    val.forEach(ele => {
+        // console.log("Element : ", ele);
 
-    printCount.innerText = value.length;
+        if (ele !== '') {
+            count++;
+        }
+    })
+
+    totalLengthWord.innerText = count;
 }
 
-function wordFrequency() {
-    const value = wordAnalyzer.value;
+function wordFrequency(val) {
+    val = val.toLowerCase();
 
-    const wordFrequency = document.getElementById("wordFrequency");
-
-    const splittedText = value.split(" ");
+    const splittedText = val.split(" ");
 
     // console.log(splittedText);
 
-    wordFrequency.innerText = "";
+    displayWordFrequency.innerText = "";
 
     for (let i = 0; i < splittedText.length; i++) {
 
@@ -61,6 +68,6 @@ function wordFrequency() {
 
         // console.log(`${splittedText[i]} = ${frq}`);
 
-        wordFrequency.innerText += `${splittedText[i]} = ${frq} \n`;
+        displayWordFrequency.innerText += `${splittedText[i]} = ${frq} \n`;
     }
 }
