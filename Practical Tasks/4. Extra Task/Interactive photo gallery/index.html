@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Photo Gallery</title>
+
+    <!-- main css  -->
+    <link rel="stylesheet" href="style.css" type="text/css">
+
+    <!-- media query css  -->
+    <link rel="stylesheet" href="media-query.css" type="text/css">
+</head>
+
+<body>
+
+    <header>
+        <!-- navbar section  -->
+        <section class="navbar">
+            <div class="container">
+                <div class="navbar-content">
+                    <h2>Interactive Photo Gallery</h2>
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <main>
+
+        <!-- add image section  -->
+        <section class="add-image text-center">
+            <div class="container">
+                <div class="add-content">
+                    <input type="url" id="urlInput" placeholder="Paste Your Url Here...">
+                    <button type="submit" onclick="addImage(event)">Add</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- photo gallery section  -->
+        <section class="photo-gallery py position-relative">
+            <div class="container">
+                <div class="row" id="imageView">
+
+                </div>
+                <div class="enlarged position-absolute" onclick="hideEnlargedImage()">
+                    <img src="" alt="" id="enlargedImage">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer></footer>
+
+    <!-- main javascript  -->
+    <script src="script.js" type="text/javascript"></script>
+</body>
+
+</html>

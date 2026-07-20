@@ -1,0 +1,176 @@
+:root {
+    --background-color: #50586C;
+    --text-color: #DCE2F0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: "Cormorant Garamond", serif;
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.py {
+    padding: 100px 0;
+}
+
+.position-relative {
+    position: relative;
+}
+
+.position-absolute {
+    position: absolute;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Black Ops One", system-ui;
+}
+
+.w-1 {
+    width: 100%;
+}
+
+.w-2 {
+    width: 50%;
+}
+
+.w-3 {
+    width: 33.33%;
+}
+
+.w-4 {
+    width: 25%;
+}
+
+.w-5 {
+    width: 20%;
+}
+
+/* navbar section  */
+
+.navbar {
+    padding: 40px 0;
+}
+
+.navbar .navbar-content h2 {
+    font-size: 40px;
+    text-align: center;
+}
+
+/* add image section  */
+.add-image .add-content input {
+    width: 50%;
+    height: 30px;
+    color: white;
+    outline: none;
+    font-size: 20px;
+    border: none;
+    border-bottom: 2px solid black;
+}
+
+.add-image .add-content button {
+    padding: 5px 20px;
+    background-color: green;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+}
+
+/* gallery sectino  */
+
+.photo-gallery .gallery-content {
+    margin: 0 10px;
+}
+
+.photo-gallery .gallery-content img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.photo-gallery .gallery-content .image-overlay {
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+    background-color: transparent;
+}
+
+.photo-gallery .gallery-content .image-overlay button {
+    padding: 5px 10px;
+    background: red;
+    font-size: 16px;
+    margin: 0 10px;
+}
+
+.photo-gallery .gallery-content .image-overlay .view {
+    padding: 5px 10px;
+    background: green;
+    font-size: 16px;
+    margin: 0 10px;
+}
+
+.photo-gallery .gallery-content:hover .image-overlay {
+    top: 80%;
+    left: 50%;
+    opacity: 1;
+    transform: translate(-50%, -80%);
+}
+
+.photo-gallery .enlarged {
+    top: 0;
+    left: 50%;
+    transform: translate(-50%);
+}
