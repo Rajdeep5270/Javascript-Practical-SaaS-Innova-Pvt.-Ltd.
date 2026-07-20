@@ -79,13 +79,36 @@ h6 {
     flex-direction: column;
 }
 
-.form .form-content label {
+.form .form-content select,
+.form .form-content select option {
     color: black;
+    padding: 10px 20px;
+    font-size: 18px;
 }
 
-.form .form-content input {
+.form button {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    padding: 10px 30px;
     margin: 10px 0;
+    float: right;
+    font-size: 18px;
+    border-radius: 10px;
+}
+
+/* dynamic section  */
+
+.dynamic h2 {
+    color: var(--background-color);
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.dynamic .dynamic-content input {
     width: 50%;
     height: 30px;
-    border-radius: 10px;
+    outline: none;
+    color: black;
+    font-size: 20px;
+    margin: 10px 0;
 }

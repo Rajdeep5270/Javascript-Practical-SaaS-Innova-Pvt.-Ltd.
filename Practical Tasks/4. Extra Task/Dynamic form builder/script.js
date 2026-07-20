@@ -1,16 +1,11 @@
-let inputFields = +prompt("Enter number of input fields : ");
-let inputType = prompt("Enter element type : ");
+const formInputType = document.getElementById("formInputType");
+const dynamicForm = document.getElementById("dynamicForm");
 
-const displayInputFields = document.getElementById("displayInputFields");
+document.getElementById("inputAddField").addEventListener('click', e => {
+    // alert("Hello World");
+    // console.log("Form Input Type Value : ", formInputType.value);
 
-console.log(inputFields);
-console.log(inputType);
-
-// for (let i = 0; i < inputFields; i++) {
-//     displayInputFields.innerHTML += `
-//                     <div>
-//                         <label for="">Input</label>
-//                         <input type="text">
-//                     </div>
-//     `;
-// }
+    dynamicForm.innerHTML += `
+        <input type="${formInputType.value}"  placeholder="${formInputType.value}">
+    `;
+}); 
