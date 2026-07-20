@@ -58,3 +58,38 @@ h5,
 h6 {
     font-family: "Black Ops One", system-ui;
 }
+
+/* navbar section  */
+
+.navbar {
+    background-color: var(--background-color);
+    padding: 30px 0;
+}
+
+.navbar .navbar-content h2 {
+    font-size: 30px;
+    text-align: center;
+}
+
+/* calci section  */
+.calci .calci-content input {
+    width: 4%;
+    height: 30px;
+    font-size: 18px;
+    color: black;
+}
+
+
+.calci .calci-button button {
+    font-size: 18px;
+    padding: 5px 10px;
+    background-color: var(--background-color);
+    margin: 20px 0;
+}
+
+/* result section  */
+.result .result-content p {
+    color: black;
+    font-size: 40px;
+    font-weight: 600;
+}
