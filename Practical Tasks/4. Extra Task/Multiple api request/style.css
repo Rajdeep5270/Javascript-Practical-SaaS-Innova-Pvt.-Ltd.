@@ -1,0 +1,81 @@
+:root {
+    --background-color: #1E293B;
+    --text-color: #F8FAFC;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: "Cormorant Garamond", serif;
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.py {
+    padding: 100px 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Black Ops One", system-ui;
+}
+
+/* navbar section  */
+.navbar {
+    padding: 40px 0;
+}
+
+.navbar .navbar-content h2 {
+    font-size: 40px;
+}
+
+/* display users section  */
+
+.display-users .users-content table {
+    width: 100%;
+}
+
+.display-users .users-content table thead tr th,
+.display-users .users-content table tbody tr td {
+    padding: 10px 20px;
+}
