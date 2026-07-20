@@ -1,0 +1,91 @@
+:root {
+    --background-color: #990011;
+    --text-color: #FCF6F5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: var(--text-color);
+    font-family: "Cormorant Garamond", serif;
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.py {
+    padding: 100px 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Black Ops One", system-ui;
+}
+
+/* navbar section  */
+
+.navbar {
+    background-color: var(--background-color);
+    padding: 40px 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.navbar .navbar-content h2 {
+    font-size: 30px;
+    text-align: center;
+}
+
+/* form section  */
+
+.form .form-content {
+    flex-direction: column;
+}
+
+.form .form-content label {
+    color: black;
+}
+
+.form .form-content input {
+    margin: 10px 0;
+    width: 50%;
+    height: 30px;
+    border-radius: 10px;
+}
