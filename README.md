@@ -42,11 +42,44 @@ Javascript Practice Tasks/
 │       └── style.css
 └── Practical Tasks/
     ├── 4. Extra Task/
+    │   ├── Basic calculator/
+    │   │   ├── index.html
+    │   │   ├── script.js
+    │   │   └── style.css
+    │   ├── Count-down timer/
+    │   │   ├── index.html
+    │   │   ├── script.js
+    │   │   └── style.css
+    │   ├── Dynamic form builder/
+    │   │   ├── index.html
+    │   │   ├── script.js
+    │   │   └── style.css
+    │   ├── Image Carousel/
+    │   │   ├── index.html
+    │   │   ├── script.js
+    │   │   └── style.css
+    │   ├── Interactive photo gallery/
+    │   │   ├── index.html
+    │   │   ├── media-query.css
+    │   │   ├── script.js
+    │   │   └── style.css
+    │   ├── Multiple api request/
+    │   │   ├── index.html
+    │   │   ├── script.js
+    │   │   └── style.css
+    │   ├── Number game task/
+    │   │   ├── index.html
+    │   │   ├── script.js
+    │   │   └── style.css
     │   ├── Quiz application task/
     │   │   ├── index.html
     │   │   ├── script.js
     │   │   └── style.css
-    │   └── Quote of the day application/
+    │   ├── Quote of the day application/
+    │   │   ├── index.html
+    │   │   ├── script.js
+    │   │   └── style.css
+    │   └── To-Do list with drag & drop/
     │       ├── index.html
     │       ├── script.js
     │       └── style.css
