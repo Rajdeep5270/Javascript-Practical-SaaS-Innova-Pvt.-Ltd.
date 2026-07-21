@@ -1,0 +1,112 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: var(--text-color);
+    font-family: "Cormorant Garamond", serif;
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.py {
+    padding: 100px 0;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Black Ops One", system-ui;
+}
+
+.w-1 {
+    width: 100%;
+}
+
+.w-2 {
+    width: 50%;
+}
+
+.w-3 {
+    width: 33.33%;
+}
+
+.w-4 {
+    width: 25%;
+}
+
+.w-5 {
+    width: 20%;
+}
+
+/* navbar section  */
+
+.navbar {
+    padding: 40px 0;
+}
+
+.navbar .navbar-content h2 {
+    font-size: 40px;
+}
+
+/* stats section  */
+.stats .stats-content {
+    padding: 30px;
+    box-shadow: 1px 1px 10px 1px lightgray;
+    margin: 0 20px;
+}
+
+.stats .stats-content h2 {
+    margin: 20px 0;
+}
+
+.stats .stats-content p {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* graph section  */
+.graph .graph-content select {
+    height: 30px;
+    font-size: 18px;
+}
