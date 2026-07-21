@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Analysis Tool</title>
+
+    <!-- main css  -->
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+
+<body>
+
+    <header>
+        <!-- navbar section  -->
+        <section class="navbar">
+            <div class="container">
+                <div class="navbar-content text-center">
+                    <h2>Text Analysis Tool</h2>
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <main>
+        <!-- input section  -->
+        <section class="input py">
+            <div class="container">
+                <div class="input-content text-center">
+                    <input type="text" id="inputText" placeholder="Type Here...">
+                    <button type="submit" id="submitBtn">Analyse</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- output section -->
+        <section class="output">
+            <div class="container">
+                <div class="output-content text-center">
+                    <h2 id="displayCountedWords"></h2>
+                    <h2 id="displayAverageWordLength"></h2>
+                    <h2 id="displayMostCommonWords"></h2>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer></footer>
+
+
+    <!-- main javascript  -->
+    <script src="script.js" type="text/javascript"></script>
+</body>
+
+</html>
