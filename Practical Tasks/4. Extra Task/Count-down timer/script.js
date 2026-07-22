@@ -7,7 +7,7 @@ let intervalId = null;
 startBtn.addEventListener("click", startCountdown);
 
 function startCountdown() {
-    // Stop any previous countdown
+    // if btn is clicked two times the previous interval will stop and new one will start
     clearInterval(intervalId);
 
     let time = Number(inputSec.value);
