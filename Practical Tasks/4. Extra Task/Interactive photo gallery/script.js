@@ -24,12 +24,11 @@ function renderImages() {
 
     allImages.forEach(img => {
         imageView.innerHTML += `
-                    <div class="w-4 w-md-2 w-sm-1">
+                    <div class="w-3 w-md-2 w-sm-1">
                         <div class="gallery-content position-relative" id="imageContainer">
-                            <img src="${img.imageUrl}" alt="">
+                            <img src="${img.imageUrl}" onclick="viewLargeImage(${img.id})" alt="">
                             <div class="image-overlay position-absolute d-flex">
                                 <button onclick="deleteImg(${img.id})">Delete</button>
-                                <button class="view" onclick="viewLargeImage(${img.id})">View</button>
                             </div>
                         </div>
                     </div>
