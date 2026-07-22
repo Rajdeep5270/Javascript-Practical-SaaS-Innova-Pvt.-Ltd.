@@ -50,6 +50,10 @@ Javascript Practice Tasks/
     │   │   ├── index.html
     │   │   ├── script.js
     │   │   └── style.css
+    │   ├── Data analysis dashboard/
+    │   │   ├── index.html
+    │   │   ├── script.js
+    │   │   └── style.css
     │   ├── Dynamic form builder/
     │   │   ├── index.html
     │   │   ├── script.js
@@ -76,6 +80,10 @@ Javascript Practice Tasks/
     │   │   ├── script.js
     │   │   └── style.css
     │   ├── Quote of the day application/
+    │   │   ├── index.html
+    │   │   ├── script.js
+    │   │   └── style.css
+    │   ├── Text analysis tool/
     │   │   ├── index.html
     │   │   ├── script.js
     │   │   └── style.css
