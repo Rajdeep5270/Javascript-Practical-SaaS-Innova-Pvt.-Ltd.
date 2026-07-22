@@ -1,6 +1,6 @@
 :root {
     --background-color: #990011;
-    --text-color: #FCF6F5;
+    --text-color: #000000;
 }
 
 * {
@@ -86,6 +86,16 @@ h6 {
     font-size: 18px;
 }
 
+.form .form-content .label-name {
+    height: 40px;
+    width: 30%;
+    font-size: 18px;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid black;
+    color: black;
+}
+
 .form button {
     background-color: var(--background-color);
     color: var(--text-color);
@@ -102,13 +112,28 @@ h6 {
     color: var(--background-color);
     text-align: center;
     margin-bottom: 50px;
+    font-size: 30px;
+}
+
+.dynamic .dynamic-content label {
+    display: block;
+    font-size: 18px;
 }
 
 .dynamic .dynamic-content input {
-    width: 50%;
+    width: 30%;
     height: 30px;
     outline: none;
     color: black;
     font-size: 20px;
     margin: 10px 0;
+}
+
+.dynamic #submitBtn button {
+    padding: 10px 30px;
+    border-radius: 10px;
+    background-color: var(--background-color);
+    font-size: 18px;
+    font-weight: 600;
+    float: right;
 }

@@ -23,31 +23,43 @@
         </section>
     </header>
 
+
+
     <main>
         <!-- form sectin  -->
         <section class="form py text-center">
             <div class="container">
                 <div class="form-content" id="displayInputFields">
+                    <!-- <input type="text" id="labelName" class="label-name" placeholder="Enter Label Name...">
                     <select name="" id="formInputType">
-                        <option value="text">text</option>
-                        <option value="number">number</option>
-                        <option value="radio">radio</option>
-                    </select>
+                        <option value="heading">Heading</option>
+                        <option value="text">Text</option>
+                        <option value="email">Email</option>
+                        <option value="password">Password</option>
+                        <option value="number">Number</option>
+                        <option value="radio">Radio</option>
+                        <option value="button">Button</option>
+                    </select> -->
                 </div>
 
                 <div>
-                    <button id="inputAddField">Add Input Field</button>
+                    <button onclick="formCreation()">Add Input Field</button>
                 </div>
             </div>
         </section>
 
         <!-- dynamic form sectin  -->
-        <section class="dynamic py">
+        <section class=" dynamic py">
             <div class="container">
-                <h2>Dynamic Form</h2>
+                <h2 id="formTitleDisplay"></h2>
                 <div id="dynamicForm" class="dynamic-content text-center">
 
                 </div>
+                <div id="submitBtn">
+
+                </div>
+
+                <!-- <input type="radio"> -->
             </div>
         </section>
     </main>
