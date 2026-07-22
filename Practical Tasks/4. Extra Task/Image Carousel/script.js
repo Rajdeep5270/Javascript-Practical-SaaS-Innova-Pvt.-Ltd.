@@ -31,17 +31,19 @@ function loadCarousel() {
 loadCarousel();
 
 prevBtn.addEventListener('click', e => {
-    currentImg = currentImg - 1;
+    currentImg--;
+
     loadCarousel();
 });
 
 nextBtn.addEventListener('click', e => {
-    currentImg = currentImg + 1;
+    currentImg++;
+
     loadCarousel();
 });
 
-setInterval(() => {
-    currentImg = currentImg + 1;
+intervalId = setInterval(() => {
+    currentImg++;
 
     if (currentImg === allImages.length)
         currentImg = 0;
