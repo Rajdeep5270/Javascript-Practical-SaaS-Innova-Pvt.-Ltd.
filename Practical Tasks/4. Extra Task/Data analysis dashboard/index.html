@@ -50,6 +50,51 @@
             </div>
         </section>
 
+        <!-- display metrics  -->
+        <section class="metrics py">
+            <div class="container">
+                <div class="metrics-content">
+                    <label for="">Filter Data
+                        <select name="" id="" onchange="displayMatrics(event)">
+                            <option value="age">Age</option>
+                            <option value="height">Height</option>
+                            <option value="weight">Weight</option>
+                        </select>
+                    </label>
+
+                    <div class="row">
+                        <div class="w-4">
+                            <div class="stats-content">
+                                <h2>Average</h2>
+                                <p id="average"></p>
+                            </div>
+                        </div>
+
+                        <div class="w-4">
+                            <div class="stats-content">
+                                <h2>Minium</h2>
+                                <p id="minimum"></p>
+                            </div>
+                        </div>
+
+                        <div class="w-4">
+                            <div class="stats-content">
+                                <h2>Maximum</h2>
+                                <p id="maximum"></p>
+                            </div>
+                        </div>
+
+                        <div class="w-4">
+                            <div class="stats-content">
+                                <h2>Total</h2>
+                                <p id="sum"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- graph section  -->
         <section class="graph py">
             <div class="container">
@@ -71,9 +116,9 @@
                         </select>
                     </label>
 
-                    <button id="makeGraph">Make Graph</button>
+                    <button id="makeGraph" class="py">Make Graph</button>
                     <div>
-                        <canvas id="displayGraph" style="height: 400px;"></canvas>
+                        <canvas id="displayGraph" style="max-height: 600px; max-width: 100%;"></canvas>
                     </div>
                 </div>
             </div>

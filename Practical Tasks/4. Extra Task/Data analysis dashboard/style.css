@@ -89,18 +89,27 @@ h6 {
     font-size: 40px;
 }
 
-/* stats section  */
-.stats .stats-content {
-    padding: 30px;
-    box-shadow: 1px 1px 10px 1px lightgray;
-    margin: 0 20px;
+/* metrics section  */
+.metrics .metrics-content select {
+    height: 30px;
+    font-size: 16px;
 }
 
-.stats .stats-content h2 {
+/* stats section  */
+.stats .stats-content,
+.metrics .metrics-content .stats-content {
+    padding: 30px;
+    box-shadow: 1px 1px 10px 1px lightgray;
+    margin: 20px;
+}
+
+.stats .stats-content h2,
+.metrics .metrics-content .stats-content h2 {
     margin: 20px 0;
 }
 
-.stats .stats-content p {
+.stats .stats-content p,
+.metrics .metrics-content .stats-content p {
     font-size: 18px;
     font-weight: 600;
 }
@@ -109,4 +118,8 @@ h6 {
 .graph .graph-content select {
     height: 30px;
     font-size: 18px;
+}
+
+.graph .graph-content #makeGraph {
+    padding: 6px 20px;
 }

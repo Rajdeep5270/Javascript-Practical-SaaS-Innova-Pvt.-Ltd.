@@ -9,22 +9,28 @@ const filterData = document.getElementById("filterData");
 const chartType = document.getElementById("chartType");
 const makeGraph = document.getElementById("makeGraph");
 
+// mertics display variables 
+const average = document.getElementById("average");
+const minimum = document.getElementById("minimum");
+const maximum = document.getElementById("maximum");
+const sum = document.getElementById("sum");
+
+// chart global variable 
 let myChart = null;
 
 async function getData() {
+
     const res = await fetch(URL);
 
     const data = await res.json();
-
-    // console.log(data.users[0].role);
 
     return data.users;
 }
 
 async function countRoles() {
-    // console.log(data);
-
     const data = await getData();
+
+    // console.log(data);
 
     let admin = 0;
     let moderator = 0;
@@ -39,10 +45,6 @@ async function countRoles() {
             user++;
     })
 
-    // console.log("Admin : ", admin);
-    // console.log("Moderator : ", moderator);
-    // console.log("User : ", user);
-
     totalAdmin.innerText = admin;
     totalModerator.innerText = moderator;
     totalUser.innerText = user;
@@ -50,20 +52,15 @@ async function countRoles() {
     return [admin, moderator, user];
 }
 
-countRoles();
-
 async function displayGraphFunc() {
     const data = await getData();
 
     const value = await countRoles();
 
+    // this is used to remove duplicate roles values 
     let key = data.map(val => val.role);
-
     key = new Set(key);
-
     key = Array.from(key);
-
-    // console.log(roles);
 
     myChart = new Chart("displayGraph", {
         type: "pie",
@@ -71,64 +68,20 @@ async function displayGraphFunc() {
             labels: key,
             datasets: [{
                 data: value,
+                backgroundColor: ["red", "green", "blue", "orange", "brown"]
             }]
         },
-        option: {}
+        options: {
+            legend: { display: false },
+            title: {
+                display: true,
+                text: 'Data Analytic Graph'
+            }
+        }
     });
 }
 
 displayGraphFunc();
-
-// filterData.addEventListener('click', async e => {
-//     let val = e.target.value;
-
-//     if (!val) return;
-
-
-
-//     console.log(count);
-
-//     // sortedData = new Set(sortedData);
-
-//     // sortedData = Array.from(sortedData);
-
-//     // data.map(ele => {
-//     //     console.log(sortedData);
-//     //     console.log(ele[val]);
-//     // });
-
-//     // displayGraph.destroy();
-
-
-
-//     // displayGraphFunc(key, value, "bar");
-
-//     // console.log("Key : ", allKey);
-//     // console.log("Value : ", allValue);
-
-
-// });
-
-// chartType.addEventListener('click', e => {
-//     const val = e.target.value;
-
-//     if (!val) return;
-
-//     myChart.destroy();
-
-//     myChart = new Chart("displayGraph", {
-//         type: bar,
-//         data: {
-//             labels: allKey,
-//             datasets: [{
-//                 data: allValue
-//             }]
-//         },
-//         option: {}
-//     })
-
-//     e.target.value = "";
-// })
 
 makeGraph.addEventListener('click', async e => {
     if (!filterData.value || !chartType.value) {
@@ -140,11 +93,7 @@ makeGraph.addEventListener('click', async e => {
 
     const data = await getData();
 
-    // console.log(val);
-
     let sortedData = data.map(ele => ele[filterData.value]);
-
-    // console.log(sortedData);
 
     const count = sortedData.reduce((acc, curr) => {
         acc[curr] = (acc[curr] || 0) + 1;
@@ -160,16 +109,59 @@ makeGraph.addEventListener('click', async e => {
         allValue.push(value);
     }
 
-    myChart.destroy();
-
     myChart = new Chart("displayGraph", {
         type: chartType.value,
         data: {
             labels: allKey,
             datasets: [{
-                data: allValue
+                data: allValue,
+                backgroundColor: ["red", "green", "blue", "orange", "brown"]
             }]
         },
-        option: {}
+        options: {}
     })
-})
+});
+
+async function displayMatrics(event) {
+    average.innerText = "Loading...";
+    minimum.innerText = "Loading...";
+    maximum.innerText = "Loading...";
+    sum.innerText = "Loading...";
+
+    let val = null;
+
+    if (event)
+        val = event.target.value;
+    else
+        val = 'age';
+
+    const data = await getData();
+
+    const filteredData = data.map(ele => ele[val]);
+
+    let averageCount = 0;
+    let minCount = filteredData[0];
+    let maxCount = filteredData[0];
+    let totalSum = 0;
+
+    for (let i = 0; i < filteredData.length; i++) {
+        if (minCount > filteredData[i]) {
+            minCount = filteredData[i];
+        }
+
+        if (maxCount < filteredData[i]) {
+            maxCount = filteredData[i];
+        }
+
+        totalSum += filteredData[i];
+    }
+
+    averageCount = totalSum / filteredData.length;
+
+    average.innerText = averageCount.toFixed(2);
+    minimum.innerText = minCount.toFixed(2);
+    maximum.innerText = maxCount.toFixed(2);
+    sum.innerText = totalSum.toFixed(2);
+}
+
+displayMatrics();
