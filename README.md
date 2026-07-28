@@ -71,6 +71,15 @@ Javascript Practice Tasks/
     │   │   ├── index.html
     │   │   ├── script.js
     │   │   └── style.css
+    │   ├── Music player with playlist/
+    │   │   ├── index.html
+    │   │   ├── Music/
+    │   │   │   ├── Believer.mp3
+    │   │   │   ├── chilvera-walking-in-the-light-472432.mp3
+    │   │   │   ├── Coverless book.mp3
+    │   │   │   └── The song of alone.mp3
+    │   │   ├── script.js
+    │   │   └── style.css
     │   ├── Number game task/
     │   │   ├── index.html
     │   │   ├── script.js
