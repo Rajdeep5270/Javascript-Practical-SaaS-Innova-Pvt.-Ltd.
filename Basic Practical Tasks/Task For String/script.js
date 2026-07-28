@@ -48,7 +48,7 @@ function countWords(val) {
 function wordFrequency(val) {
     val = val.toLowerCase();
 
-    const splittedText = val.split(" ");
+    const splittedText = val.trim().split(/\s+/);;
 
     // console.log(splittedText);
 
@@ -56,7 +56,7 @@ function wordFrequency(val) {
 
     for (let i = 0; i < splittedText.length; i++) {
 
-        if (splittedText[i] === null) continue;
+        if (splittedText[i] === null || splittedText[i] === "") continue;
 
         let frq = 1;
         for (let j = i + 1; j < splittedText.length; j++) {
