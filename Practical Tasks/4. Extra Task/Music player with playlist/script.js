@@ -1,21 +1,21 @@
 const playlistSongs = [
     {
-        id: Math.floor(Math.random() * 100),
+        id: 1,
         name: "Believer",
         src: "./Music/Believer.mp3"
     },
     {
-        id: Math.floor(Math.random() * 100),
+        id: 2,
         name: "Walking in the Light",
         src: "./Music/chilvera-walking-in-the-light-472432.mp3"
     },
     {
-        id: Math.floor(Math.random() * 100),
+        id: 3,
         name: "Coverless Book",
         src: "./Music/Coverless book.mp3"
     },
     {
-        id: Math.floor(Math.random() * 100),
+        id: 4,
         name: "The song of alone",
         src: "./Music/The song of alone.mp3"
     }
@@ -29,11 +29,6 @@ const yourPlayList = document.getElementById("yourPlayList");
 const currentSong = document.getElementById("currentSong");
 
 let currentIndex = 0;
-
-function songEvent(callback) {
-    // console.log(eventName);
-    callback();
-}
 
 // Display Playlist
 function displayPlaylist() {
@@ -56,9 +51,9 @@ function displaySongPlaylist() {
 
     songs.forEach((song, index) => {
         yourPlayList.innerHTML += `
-                            <tr onclick="selectSong(${index})">
+                            <tr>
                                 <td>${index + 1}</td>
-                                <td>${song.name}</td>
+                                <td onclick="selectSong(${index})">${song.name}</td>
                                 <td><button onclick="removeSong(${index})">Remove</button></td>
                             </tr>
         `
@@ -84,28 +79,20 @@ function playSong() {
         selectSong(currentIndex);
     }
 
-    songEvent(function () {
-        audio.play();
-    });
-
+    audio.play();
 }
 
 // Pause
 function pauseSong() {
 
-    songEvent(function () {
-        audio.pause();
-    });
-
+    audio.pause();
 }
 
 // Stop
 function stopSong() {
 
-    songEvent(function () {
-        audio.pause();
-        audio.currentTime = 0;
-    });
+    audio.pause();
+    audio.currentTime = 0;
 
 }
 
