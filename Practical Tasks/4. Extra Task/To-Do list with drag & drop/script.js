@@ -7,14 +7,14 @@ const tBody = document.getElementById("tBody");
 let draggedTaskId = null;
 
 function addTask() {
-    if (task.value == "") {
+    if (textInput.value == "") {
         alert("Please enter a task.")
         return;
     }
 
     allTasks.push({
         id: Math.floor(Math.random() * 100),
-        text: task.value
+        text: textInput.value
     });
 
     textInput.value = "";
@@ -99,11 +99,5 @@ function dropTask(e) {
 }
 
 addTaskBtn.addEventListener("click", addTask);
-
-textInput.addEventListener("keydown", function (e) {
-    if (e.key === "Enter") {
-        addTask();
-    }
-});
 
 displayTasks();
