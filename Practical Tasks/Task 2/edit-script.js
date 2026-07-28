@@ -7,7 +7,6 @@ const editTask = tasks.find((ele) => ele.id === editId);
 
 taskInput.value = editTask.task;
 
-
 function updateEditedTask() {
     // console.log(taskInput.value);
 
