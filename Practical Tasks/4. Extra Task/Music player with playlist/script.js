@@ -1,98 +1,154 @@
-// let allPlaylists = JSON.parse(localStorage.getItem('playlist') || '[]');
-
-let allPlaylists = [];
-
-const songName = document.getElementById("songName");
-const singerName = document.getElementById("singerName");
-const songFile = document.getElementById("songFile");
-
-const tBody = document.getElementById("tBody");
-
-const displaySongName = document.getElementById("displaySongName");
-const displaySingerName = document.getElementById("displaySingerName");
-const displayAudio = document.getElementById("displayAudio");
-
-const addSongToPlaylist = (e) => {
-    e.preventDefault();
-
-    const formData = new FormData();
-
-    if (!songName.value || !singerName.value || !songFile.value) {
-        alert("All fields are compulsory");
-        return;
+const playlistSongs = [
+    {
+        id: Math.floor(Math.random() * 100),
+        name: "Believer",
+        src: "./Music/Believer.mp3"
+    },
+    {
+        id: Math.floor(Math.random() * 100),
+        name: "Walking in the Light",
+        src: "./Music/chilvera-walking-in-the-light-472432.mp3"
+    },
+    {
+        id: Math.floor(Math.random() * 100),
+        name: "Coverless Book",
+        src: "./Music/Coverless book.mp3"
+    },
+    {
+        id: Math.floor(Math.random() * 100),
+        name: "The song of alone",
+        src: "./Music/The song of alone.mp3"
     }
+];
 
-    formData.append('song_file', songFile.value);
+const songs = [];
 
-    allPlaylists.push({
-        id: Math.floor(Math.random() * 1000),
-        song_name: songName.value,
-        singer_name: singerName.value,
-        song_file: songFile.value
-    });
+const audio = document.getElementById("audioPlayer");
+const tBody = document.getElementById("tBody");
+const yourPlayList = document.getElementById("yourPlayList");
+const currentSong = document.getElementById("currentSong");
 
-    // localStorage.setItem('playlist', JSON.stringify(allPlaylists));
+let currentIndex = 0;
 
-    songName.value = "";
-    singerName.value = "";
-    songFile.value = "";
-
-    viewSongList();
+function songEvent(callback) {
+    // console.log(eventName);
+    callback();
 }
 
-const viewSongList = () => {
-    if (allPlaylists.length === 0) {
-        tBody.innerHTML = `<tr>
-            <td colspan="4">There were no songs found</td>
-        </tr>`;
-
-        return;
-    }
+// Display Playlist
+function displayPlaylist() {
 
     tBody.innerHTML = "";
 
-    allPlaylists.forEach((data, idx) => {
+    playlistSongs.forEach((song, index) => {
         tBody.innerHTML += `
-                            <tr  onclick="songToListen(${data.id})" >
-                                <td>${idx + 1}</td>
-                                <td>${data.song_name}</td>
-                                <td>${data.singer_name}</td>
-                                <td>
-                                    <button class="btn btn-outline-danger" onclick="deleteSong(${data.id})">Delete</button>
-                                    <button class="btn btn-outline-success" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" onclick="songToListen(${data.id})">Play</button>
-                                </td>
+                            <tr>
+                                <td>${index + 1}</td>
+                                <td>${song.name}</td>
+                                <td><button onclick="addSongsToPlaylist(${song.id})">Add</button></td>
                             </tr>
         `
     });
-};
-
-viewSongList();
-
-const deleteSong = (deleteId) => {
-    // console.log("Delete ID : ", deleteId);
-
-    allPlaylists = allPlaylists.filter(data => data.id !== deleteId);
-
-    // localStorage.setItem('playlist', JSON.stringify(allPlaylists));
-
-    viewSongList();
 }
 
-const songToListen = (playId) => {
-    // console.log("Play ID : ", playId)
+function displaySongPlaylist() {
+    yourPlayList.innerHTML = "";
 
-    console.log(allPlaylists);
-
-    const foundSong = allPlaylists.find(data => data.id === playId);
-
-    // console.log("Song to be find : ", foundSong);
-
-    displaySongName.innerText = foundSong.song_name;
-
-    displaySingerName.innerText = foundSong.singer_name;
-
-    // displayAudio.setAttribute('src', foundSong.song_file);
+    songs.forEach((song, index) => {
+        yourPlayList.innerHTML += `
+                            <tr onclick="selectSong(${index})">
+                                <td>${index + 1}</td>
+                                <td>${song.name}</td>
+                                <td><button onclick="removeSong(${index})">Remove</button></td>
+                            </tr>
+        `
+    });
 }
 
+// Select Song
+function selectSong(index) {
+    if (songs.length === 0) {
+        alert("Your Playlist is empty");
+        return;
+    }
 
-// data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+    currentIndex = index;
+    currentSong.innerText = "Current Song : " + songs[index].name;
+    audio.src = songs[index].src;
+}
+
+// Play
+function playSong() {
+
+    if (!audio.src) {
+        selectSong(currentIndex);
+    }
+
+    songEvent(function () {
+        audio.play();
+    });
+
+}
+
+// Pause
+function pauseSong() {
+
+    songEvent(function () {
+        audio.pause();
+    });
+
+}
+
+// Stop
+function stopSong() {
+
+    songEvent(function () {
+        audio.pause();
+        audio.currentTime = 0;
+    });
+
+}
+
+// Remove Song
+function removeSong(index) {
+
+    songs.splice(index, 1);
+
+    if (currentIndex >= songs.length) {
+        currentIndex = 0;
+    }
+
+    displaySongPlaylist();
+
+}
+
+// Shuffle Playlist
+function shufflePlaylist() {
+
+    songs.sort(() => Math.random() - 0.5);
+
+    displaySongPlaylist();
+
+}
+
+function addSongsToPlaylist(songId) {
+    // console.log("Song Id : ", songId);
+    const isFound = songs.find(song => song.id === songId);
+
+    if (isFound) {
+        alert("Song is already added");
+        return;
+    }
+
+    const songFound = playlistSongs.find(song => song.id === songId);
+
+    // console.log(songFound);
+
+    songs.push(songFound);
+
+    // console.log(songs);
+
+    displaySongPlaylist();
+}
+
+displayPlaylist();

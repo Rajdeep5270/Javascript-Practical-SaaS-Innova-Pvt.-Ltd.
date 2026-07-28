@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: var(--text-color);
+    font-family: "Cormorant Garamond", serif;
+    cursor: pointer;
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.py {
+    padding: 100px 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Black Ops One", system-ui;
+}
+
+/* section music */
+.music {
+    background-color: aquamarine;
+}
+
+.music .music-content {
+    padding: 20px 0;
+    background-color: aqua;
+}
+
+.music .music-content h3,
+.music .music-content .buttons {
+    padding: 20px 0;
+}
+
+.music .music-content .buttons button {
+    padding: 10px 20px;
+}
+
+/* playlist section */
+.playlist {
+    padding: 50px 0;
+    background: #f5f7fa;
+}
+
+.playlist-content {
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+}
+
+thead {
+    background: #007bff;
+    color: #fff;
+}
+
+th,
+td {
+    padding: 14px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+button {
+    padding: 8px 16px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.playlist .playlist-content #yourPlayList tr td button {
+    background-color: red;
+}
