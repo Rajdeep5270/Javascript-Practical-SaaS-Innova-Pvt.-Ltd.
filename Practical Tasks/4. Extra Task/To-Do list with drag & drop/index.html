@@ -24,17 +24,15 @@
     </header>
 
     <main>
-        <!-- add to-do section  -->
         <section class="to-do py">
             <div class="container">
                 <div class="to-do-content d-flex justify-center align-center">
                     <input type="text" id="textInput" placeholder="Enter your task here...">
-                    <button onclick="addData(event)">Add Task</button>
+                    <button type="button" id="addTaskBtn">Add Task</button>
                 </div>
             </div>
         </section>
 
-        <!-- view tasks section  -->
         <section class="view-task py">
             <div class="container">
                 <div class="view-content text-center">
@@ -47,9 +45,7 @@
                                 <th>Task</th>
                             </tr>
                         </thead>
-                        <tbody id="tBody" ondrop="dropHandler(event)" ondragover="dragOverHandler(event)">
-
-                        </tbody>
+                        <tbody id="tBody"></tbody>
                     </table>
                 </div>
             </div>

@@ -1,50 +1,113 @@
-const allTasks = [];
+let allTasks = [];
 
 const textInput = document.getElementById("textInput");
+const addTaskBtn = document.getElementById("addTaskBtn");
 const tBody = document.getElementById("tBody");
 
-function addData(event) {
-    // console.log(textInput.value);;
+let draggedTaskId = null;
 
-    allTasks.push({
-        id: Math.floor(Math.random() * 1000),
-        task: textInput.value
-    });
+function addTask() {
+    let task = textInput.value.trim();
 
-    viewTasks();
+    if (task == "") {
+        message.textContent = "Please enter a task.";
+        return;
+    }
+
+    let newTask = {
+        id: Date.now(),
+        text: task
+    };
+
+    allTasks.push(newTask);
+
+    textInput.value = "";
+
+    displayTasks();
 }
 
-function viewTasks() {
+function displayTasks() {
     tBody.innerHTML = "";
 
-    allTasks.forEach((task, idx) => {
-        tBody.innerHTML += `
-                            <tr id="${task.id}" draggable="true" ondragstart="dragStartHandler(event)">
-                                <td>${idx + 1}</td>
-                                <td>${task.task}</td>
-                            </tr>
-        `;
-    })
+    if (allTasks.length == 0) {
+        let row = document.createElement("tr");
+        row.innerHTML = "<td colspan='2'>No tasks available.</td>";
+        tBody.appendChild(row);
+        return;
+    }
+
+    for (let i = 0; i < allTasks.length; i++) {
+        let row = document.createElement("tr");
+
+        row.dataset.id = allTasks[i].id;
+        row.draggable = true;
+
+        row.innerHTML =
+            "<td>" + (i + 1) + "</td>" +
+            "<td>" + allTasks[i].text + "</td>";
+
+        row.addEventListener("dragstart", startDrag);
+        row.addEventListener("dragover", dragOver);
+        row.addEventListener("drop", dropTask);
+        row.addEventListener("dragleave", function () {
+            row.classList.remove("drop-target");
+        });
+
+        tBody.appendChild(row);
+    }
 }
 
-viewTasks();
-
-function dragStartHandler(event) {
-    console.log(event.target);
-    event.dataTransfer.setData('Text', event.target.id);
-    console.log(event);
+function startDrag(e) {
+    draggedTaskId = Number(e.target.dataset.id);
+    e.target.classList.add("dragging");
 }
 
-function dragOverHandler(event) {
-    event.preventDefault();
-    // console.log(event);
+function dragOver(e) {
+    e.preventDefault();
+    e.currentTarget.classList.add("drop-target");
 }
 
-function dropHandler(event) {
-    event.preventDefault();
+function dropTask(e) {
+    e.preventDefault();
 
-    const id = event.dataTransfer.getData("text/plain");
-    const draggedRow = document.getElementById(id);
+    let targetId = Number(e.currentTarget.dataset.id);
 
-    event.target.appendChild(draggedRow);
+    e.currentTarget.classList.remove("drop-target");
+
+    if (draggedTaskId == targetId) {
+        return;
+    }
+
+    let from = -1;
+    let to = -1;
+
+    for (let i = 0; i < allTasks.length; i++) {
+        if (allTasks[i].id == draggedTaskId) {
+            from = i;
+        }
+        if (allTasks[i].id == targetId) {
+            to = i;
+        }
+    }
+
+    if (from == -1 || to == -1) {
+        return;
+    }
+
+    let temp = allTasks[from];
+    allTasks.splice(from, 1);
+    allTasks.splice(to, 0, temp);
+
+    draggedTaskId = null;
+    displayTasks();
 }
+
+addTaskBtn.addEventListener("click", addTask);
+
+textInput.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+        addTask();
+    }
+});
+
+displayTasks();

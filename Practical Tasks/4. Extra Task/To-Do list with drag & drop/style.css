@@ -1,44 +1,30 @@
 :root {
-    --background-color: #FFFDF2;
+    --background-color: #f5f5f5;
     --text-color: #000000;
+    --border-color: #cccccc;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: var(--background-color);
     color: var(--text-color);
-    font-family: "Cormorant Garamond", serif;
-    cursor: pointer;
+    font-family: Arial, sans-serif;
 }
 
-a {
-    display: inline-block;
-    text-decoration: none;
-}
-
-li {
-    list-style: none;
-}
-
-img {
-    display: block;
-    max-width: 100%;
+body {
+    background-color: var(--background-color);
+    min-height: 100vh;
 }
 
 .container {
-    max-width: 1140px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 0 15px;
 }
 
 .d-flex {
     display: flex;
-}
-
-.justify-between {
-    justify-content: space-between;
 }
 
 .justify-center {
@@ -53,52 +39,63 @@ img {
     text-align: center;
 }
 
-.row {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: "Black Ops One", system-ui;
-}
-
 .py {
-    padding: 100px 0;
-}
-
-/* navbar section  */
-.navbar {
     padding: 40px 0;
 }
 
-.navbar .navbar-content h2 {
-    font-size: 40px;
+.navbar {
+    padding: 20px 0;
 }
 
-/* add to-do section  */
+.navbar .navbar-content h2 {
+    font-size: 28px;
+}
+
+.to-do .to-do-content {
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
 .to-do .to-do-content input {
-    width: 50%;
-    border: none;
-    outline: none;
-    font-size: 20px;
+    flex: 1;
+    min-width: 240px;
+    border: 1px solid var(--border-color);
+    padding: 8px 10px;
+    font-size: 16px;
 }
 
 .to-do .to-do-content button {
-    padding: 5px 30px;
-    font-size: 20px;
-    margin: 0 0 0 20px;
-    border-radius: 10px;
+    padding: 8px 14px;
+    font-size: 16px;
+    border: 1px solid var(--border-color);
+    background-color: #ffffff;
+    cursor: pointer;
 }
 
-/* view task sectin  */
+.message {
+    margin-top: 10px;
+    min-height: 20px;
+    font-size: 14px;
+}
+
+.view-task .view-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
 
 .view-task .view-content table thead tr th,
 .view-task .view-content table tbody tr td {
-    padding: 10px 20px;
-    font-size: 20px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid var(--border-color);
+    text-align: left;
+}
+
+.view-task .view-content table tbody tr {
+    cursor: move;
+}
+
+.view-task .view-content table tbody tr.dragging {
+    opacity: 0.6;
 }
