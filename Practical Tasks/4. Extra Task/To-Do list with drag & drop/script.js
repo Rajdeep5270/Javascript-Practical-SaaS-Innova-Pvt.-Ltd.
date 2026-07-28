@@ -7,19 +7,15 @@ const tBody = document.getElementById("tBody");
 let draggedTaskId = null;
 
 function addTask() {
-    let task = textInput.value.trim();
-
-    if (task == "") {
-        message.textContent = "Please enter a task.";
+    if (task.value == "") {
+        alert("Please enter a task.")
         return;
     }
 
-    let newTask = {
-        id: Date.now(),
-        text: task
-    };
-
-    allTasks.push(newTask);
+    allTasks.push({
+        id: Math.floor(Math.random() * 100),
+        text: task.value
+    });
 
     textInput.value = "";
 
@@ -30,9 +26,9 @@ function displayTasks() {
     tBody.innerHTML = "";
 
     if (allTasks.length == 0) {
-        let row = document.createElement("tr");
-        row.innerHTML = "<td colspan='2'>No tasks available.</td>";
-        tBody.appendChild(row);
+        tBody.innerHTML = `<tr>
+            <td colspan="2">No Tasks Found.</td>
+        </tr>`
         return;
     }
 
