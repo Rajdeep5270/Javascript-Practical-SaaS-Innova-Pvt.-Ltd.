@@ -53,9 +53,12 @@ function taskStatus(statusId) {
 
     statusUpdateTask.status = !statusUpdateTask.status;
 
-    tasks = tasks.filter(val => val.id !== statusId)
+    // tasks = tasks.map(task =>
+    //     statusId === task.id
+    //         ? { ...task, status: !task.status } : task
+    // )
 
-    tasks.push(statusUpdateTask);
+    // console.log(tasks);
 
     localStorage.setItem("tasks", JSON.stringify(tasks));
 
