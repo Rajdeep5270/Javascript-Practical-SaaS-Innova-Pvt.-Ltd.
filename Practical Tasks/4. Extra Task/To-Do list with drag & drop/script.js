@@ -1,14 +1,13 @@
 let allTasks = [];
 
-const textInput = document.getElementById("textInput");
-const addTaskBtn = document.getElementById("addTaskBtn");
-const tBody = document.getElementById("tBody");
-
 let draggedTaskId = null;
 
-function addTask() {
-    if (textInput.value == "") {
-        alert("Please enter a task.")
+const textInput = document.getElementById("textInput");
+const tBody = document.getElementById("tBody");
+
+document.getElementById("addTaskBtn").addEventListener('click', e => {
+    if (!textInput.value) {
+        alert("Please enter a task.");
         return;
     }
 
@@ -20,84 +19,84 @@ function addTask() {
     textInput.value = "";
 
     displayTasks();
-}
+})
 
 function displayTasks() {
+
     tBody.innerHTML = "";
 
-    if (allTasks.length == 0) {
-        tBody.innerHTML = `<tr>
-            <td colspan="2">No Tasks Found.</td>
-        </tr>`
+    if (allTasks.length === 0) {
+        tBody.innerHTML = `
+            <tr>
+                <td colspan="2">No Tasks Found.</td>
+            </tr>
+        `;
         return;
     }
 
-    for (let i = 0; i < allTasks.length; i++) {
-        let row = document.createElement("tr");
+    allTasks.forEach((task, index) => {
 
-        row.dataset.id = allTasks[i].id;
+        const row = document.createElement("tr");
+
+        row.dataset.id = task.id;
         row.draggable = true;
 
-        row.innerHTML =
-            "<td>" + (i + 1) + "</td>" +
-            "<td>" + allTasks[i].text + "</td>";
+        row.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${task.text}</td>
+        `;
 
         row.addEventListener("dragstart", startDrag);
         row.addEventListener("dragover", dragOver);
         row.addEventListener("drop", dropTask);
-        row.addEventListener("dragleave", function () {
+
+        row.addEventListener("dragleave", () => {
             row.classList.remove("drop-target");
         });
 
+        row.addEventListener("dragend", () => {
+            row.classList.remove("dragging");
+        });
+
         tBody.appendChild(row);
-    }
+    });
 }
 
 function startDrag(e) {
-    draggedTaskId = Number(e.target.dataset.id);
-    e.target.classList.add("dragging");
+
+    draggedTaskId = Number(e.currentTarget.dataset.id);
+
+    e.currentTarget.classList.add("dragging");
 }
 
 function dragOver(e) {
+
     e.preventDefault();
+
     e.currentTarget.classList.add("drop-target");
 }
 
 function dropTask(e) {
     e.preventDefault();
 
-    let targetId = Number(e.currentTarget.dataset.id);
+    const targetId = Number(e.currentTarget.dataset.id);
 
     e.currentTarget.classList.remove("drop-target");
 
-    if (draggedTaskId == targetId) {
-        return;
-    }
+    if (draggedTaskId === targetId) return;
 
-    let from = -1;
-    let to = -1;
+    const fromIndex = allTasks.findIndex(task => task.id === draggedTaskId);
+    const toIndex = allTasks.findIndex(task => task.id === targetId);
 
-    for (let i = 0; i < allTasks.length; i++) {
-        if (allTasks[i].id == draggedTaskId) {
-            from = i;
-        }
-        if (allTasks[i].id == targetId) {
-            to = i;
-        }
-    }
+    if (fromIndex === -1 || toIndex === -1) return;
 
-    if (from == -1 || to == -1) {
-        return;
-    }
+    const [draggedTask] = allTasks.splice(fromIndex, 1);
 
-    let temp = allTasks[from];
-    allTasks.splice(from, 1);
-    allTasks.splice(to, 0, temp);
+    allTasks.splice(toIndex, 0, draggedTask);
 
     draggedTaskId = null;
+
     displayTasks();
 }
-
-addTaskBtn.addEventListener("click", addTask);
 
 displayTasks();
