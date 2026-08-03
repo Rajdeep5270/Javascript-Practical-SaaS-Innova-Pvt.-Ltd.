@@ -38,6 +38,8 @@ function displayTasks() {
 
         const row = document.createElement("tr");
 
+        console.log(row.dataset);
+
         row.dataset.id = task.id;
         row.draggable = true;
 
@@ -99,4 +101,4 @@ function dropTask(e) {
     displayTasks();
 }
 
-displayTasks();
+displayTasks()
